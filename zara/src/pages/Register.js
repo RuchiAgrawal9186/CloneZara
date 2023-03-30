@@ -17,26 +17,25 @@ import {
     
   } from '@chakra-ui/react'
 
-const Login = () => {
-  const [input, setInput] = useState('')
+const Register = () => {
+    const [input, setInput] = useState('')
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
 
     const handleInputChange = (e) => setInput(e.target.value)
   
     const isError = input === ''
-
   return (
-
+    
     <Center>
-        <Box border="1px solid black" w={{base:"30%", md:"30%",sm:"20%"}} height={{base:"400px",md:"400px",sm:"200px"}} margin="auto" marginTop="2%" boxShadow='dark-lg'>
-            <h2 style={{fontFamily:"sans-serif",marginTop:"2%",textAlign:"center"}}>Login form</h2>
+        <Box border="1px solid black" w={{base:"30%", md:"30%",sm:"20%"}} height={{base:"450px",md:"450px",sm:"200px"}} margin="auto" marginTop="2%" boxShadow='dark-lg'>
+            <h2 style={{fontFamily:"sans-serif",marginTop:"2%",textAlign:"center"}}>Registration form</h2>
     <FormControl isRequired marginTop="4%" >
     {/* <FormLabel>Username</FormLabel> */}
-    {/* <Input placeholder='Enter Username' type="text" w={{base:"50%",md:"60%",sm:"15%"}} border="1px solid black"/> */}
+    <Input placeholder='Enter Username' type="text" w={{base:"50%",md:"60%",sm:"15%"}} border="1px solid black"/>
     {/* <FormLabel>Email</FormLabel> */}
     <HStack></HStack>
-      <Input type='email' value={input} onChange={handleInputChange} marginTop="3%"placeholder='Enter Email' w={{base:"50%",md:"60%",sm:"15%"}} border="1px solid black"/>
+      <Input type='email' value={input} onChange={handleInputChange} marginTop="5%"placeholder='Enter Email' w={{base:"50%",md:"60%",sm:"15%"}} border="1px solid black"/>
       {!isError ? (
         ""
         // <FormHelperText>
@@ -61,12 +60,12 @@ const Login = () => {
       </InputRightElement>
     </InputGroup>
     </Center>
-    <Input type="submit" value="Login" backgroundColor="black" color="white" w={{base:"50%",md:"60%",sm:"15%"}} marginTop="5%"></Input>
+    <Input type="submit" value="Register" backgroundColor="black" color="white" w={{base:"50%",md:"60%",sm:"15%"}} marginTop="5%"></Input>
     </FormControl>
     </Box>
     </Center>
-
+    
   )
 }
 
-export default Login
+export default Register
