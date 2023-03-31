@@ -29,7 +29,7 @@ const AllRoutes = () => {
             <Route path="/beauty" element={<BeautyProducts></BeautyProducts>}/>
             <Route path="*" element={<PagenotFound></PagenotFound>}/>
             <Route path="/products" element={<Products></Products>}/>
-            <Route path="/products/:id" element={<SingleProduct></SingleProduct>}/>
+            <Route path="/singleproduct/:section/:id" element={<SingleProduct></SingleProduct>}/>
             <Route path="/cart" element={<Cart></Cart>}/>
         </Routes>
       

@@ -2,7 +2,7 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import AllRoutes from './components/AllRoutes';
-
+import "./components/style.css"
 function App() {
   return (
     <div className="App">
