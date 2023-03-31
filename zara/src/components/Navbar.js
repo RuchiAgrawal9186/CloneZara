@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-import styles from "./Navbar.module.css"
-import style from "../pages/Global.module.css"
+// import styles from "./Navbar.module.css"
+// import style from "../pages/Global.module.css"
 // import React, { Component } from 'react'
 // import { BsCart4 } from "react-icons/fa";
 import { FaCartPlus} from 'react-icons/fa';
@@ -18,13 +18,13 @@ const Navbar = () => {
 ]
   return (
     <>
-    <div className={styles.header}>
-        <img src='./images/result.png' alt="logo" className={styles.logo}></img>
-      <nav className={styles.navlist}>
+    <div className="header">
+        <img src='./images/result.png' alt="logo" className="logo"></img>
+      <nav className="navlist">
         
         {
-          Links.map((item)=>{
-            return <Link to={item.to} className={styles.navlink}>{item.title}</Link>
+          Links.map((item,index)=>{
+            return <Link to={item.to} className="navlink" key={index+1}>{item.title}</Link>
           })
         } 
       </nav>
@@ -35,8 +35,8 @@ const Navbar = () => {
           <span class="input-group-text" id="basic-addon1">@</span>
         </div>
       </form> */}
-      <div className={styles.rightdiv}>
-        <Link to="/login"><div><button className={style.button}>Login</button></div></Link>
+      <div className="rightdiv">
+        <Link to="/login"><div><button className='button'>Login</button></div></Link>
         <div><FaCartPlus style={{ fontSize: '30px'}}/></div>
       </div>
 
