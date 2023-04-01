@@ -1,7 +1,7 @@
 import React from 'react'
 import { useReducer,useEffect } from 'react'
 import {useParams} from "react-router-dom"
-import Productlist from '../components/Productlist'
+// import Productlist from '../components/Productlist'
 import { Skeleton ,Stack} from '@chakra-ui/react'
 import axios from 'axios'
 

@@ -65,7 +65,7 @@ const Login = () => {
       }
       console.log(userdetails)
 
-      fetch(`http://localhost:8080/user`)
+      fetch(`https://fragile-cow-umbrella.cyclic.app/user`)
       .then((res)=>{
         // toast.success("Registartion successfully")
         return res.json()
