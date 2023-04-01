@@ -57,7 +57,7 @@ const Register = () => {
     const [password,setpassword]=useState("")
     const [data,setdata]=useState([])
 
-    const handlesubmit =(e)=>{
+    const handlesubmit =async(e)=>{
      
       e.preventDefault()
       console.log("hello")
@@ -68,7 +68,7 @@ const Register = () => {
       }
       console.log(userdetails)
 
-      fetch(`https://reqres.in/api/register`,{
+     let x= await fetch(`https://fragile-cow-umbrella.cyclic.app/user`,{
         method:"POST",
         headers:{
           "Content-Type":"application/json",
@@ -76,7 +76,11 @@ const Register = () => {
         body:JSON.stringify(userdetails)
       }).then((res)=>{
         // toast.success("Registartion successfully")
-        return res.json()
+        // return res.json()
+        toast.success("Registartion successfully")
+        setTimeout(()=>{ 
+      
+        })
         
       })
       .then((dataa)=>{
@@ -85,7 +89,7 @@ const Register = () => {
         arr.push(dataa)
         setdata(arr)
         console.log("data",arr)
-        data.filter((item)=>{
+        data.map((item)=>{
           
           return email==item.email?toast.warning("user is already registered"):toast.success("Registartion successfully")
         })
