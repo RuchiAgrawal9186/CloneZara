@@ -5,7 +5,7 @@ import { Select,VStack ,Input,InputGroup,InputRightAddon,Box, Stack} from '@chak
 const Sort = () => {
   return (
     <>
-    <Box display="flex" justifyContent="space-around" boxShadow='md' p='6' rounded='md' mb="2%">
+    {/* <Box display="flex" justifyContent="space-around" boxShadow='md' p='6' rounded='md' mb="2%">
    <Box>
 
    <InputGroup size='sm'>
@@ -15,15 +15,7 @@ const Sort = () => {
 
    </Box>
   
-    {/* <Box>   
-    <Select placeholder='Select for sorting' w="120%" alignContent="right" border="1px solid black">
-    <option value='option1'>Option 1</option>
-    <option value='option2'>Option 2</option>
-    <option value='option3'>Option 3</option>
-    </Select>
     </Box> */}
-
-    </Box>
    
     </>
   )

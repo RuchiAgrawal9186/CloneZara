@@ -3,6 +3,7 @@ import styles from "./Home.module.css"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import {Link} from "react-router-dom"
 
 const Home = () => {
 
@@ -84,6 +85,7 @@ const Home = () => {
      <div className={styles.carousel}>
         {/* <h2> Responsive </h2> */}
         <Slider {...settings}>
+        
           <div className={styles.box}>
             {/* <h3>1</h3> */}
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIIumjTLwS1ZJQq0XIPKONhjSzGfWePNLXJ2-X56O36A&usqp=CAU&ec=48665699" alt="1" /> 
@@ -104,32 +106,41 @@ const Home = () => {
           {/* <h3>1</h3> */}
           <img src="https://images-static.nykaa.com/uploads/a908e8ad-3bd3-4d87-bca2-2fca7c54bf98.jpg?tr=w-1200,cm-pad_resize" alt="2" />
           </div>
+         
         </Slider>
       </div>
+     
    
       <div className={styles.div_category}>
+        <Link to="/man">
         <div>
         <img src="https://rukminim1.flixcart.com/image/612/612/knrsjgw0/t-shirt/w/q/0/l-2115-the-dry-state-original-imag2djmgambgwhj.jpeg?q=70" alt="man img"></img>
-        <p>Men</p>
+        <p>Man</p>
         </div>
-      
+        </Link>
+        <Link to="/woman">
         <div>
         <img src="https://rukminim1.flixcart.com/image/612/612/kqpj4i80/dress/y/y/3/xl-lucy-051-purvaja-original-imag4nzkm5s9qns8.jpeg?q=70" alt="woman img"></img>
-        <p>Women</p>
+        <p>Woman</p>
         </div>
+        </Link>
+        <Link to="/kids">
         <div>
        <img src="https://images.bloomingdalesassets.com/is/image/BcomMedia/media/2022_9WK3_YW_FEATURED_SHOPS_Special_occasion_1664307196635.jpg" alt="kids img"></img>
        <p>Kids</p>
        </div>
+       </Link>
+       <Link to="/beauty">
        <div>
        <img src="https://rukminim1.flixcart.com/image/612/612/jwzabgw0/combo-kit/f/g/d/women-s-makeup-vanity-kit-of-all-the-beauty-products-mka29-otis-original-imafhdfn3utwfkpd.jpeg?q=70" alt="beauty img"></img>
        <p>Beauty</p>
        </div>
+       </Link>
       </div>
       
-      
+      <Link to="/woman">
       <div className={styles.carousel1}>
-      <h2 className={styles.h2}>WOMEN</h2>
+      <h2 className={styles.h2}>WOMAN</h2>
         <Slider {...setting}>
           <div className={styles.box1}>
             {/* <h3>1</h3> */}
@@ -165,10 +176,11 @@ const Home = () => {
           </div>
         </Slider>
       </div>
+      </Link>
 
-      
+      <Link to="/man">
       <div className={styles.carousel1}>
-      <h2 className={styles.h2}>MEN</h2>
+      <h2 className={styles.h2}>MAN</h2>
         <Slider {...setting}>
           <div className={styles.box1}>
             {/* <h3>1</h3> */}
@@ -204,6 +216,7 @@ const Home = () => {
           </div>
         </Slider>
       </div>
+      </Link>
 
 
        

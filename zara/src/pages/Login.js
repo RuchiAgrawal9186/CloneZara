@@ -1,23 +1,31 @@
 import React from 'react'
 import {useState} from "react"
 import { ToastContainer, toast } from 'react-toastify';
+import { dataContext } from '../context/DatacontextProvider';
+import { AuthContext } from '../context/AuthContextProvider';
+import { useContext } from 'react';
+// import { Navigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import {
     FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
+    // FormLabel,
+    // FormErrorMessage,
+    // FormHelperText,
     Center,
     Input,
     InputGroup,
     InputRightElement,
     Button,
-    VStack,
+    // VStack,
     HStack,
-    Container,
+    // Container,
     Box,
+    Text
     
   } from '@chakra-ui/react'
+// import { AuthContext } from '../context/AuthContextProvider';
 
 const Login = () => {
   // const [input, setInput] = useState('')
@@ -26,7 +34,11 @@ const Login = () => {
 
     const [email,setemail]=useState("")
     const [password,setpassword]=useState("")
-    const [data,setdata]=useState([])
+    // const [data,setdata]=useState([])
+
+    const navigate = useNavigate();
+    const {dataa,getdata} = useContext(dataContext)
+    const {Auth,login} = useContext(AuthContext)
 
     const Validation = ()=>{
 
@@ -43,61 +55,53 @@ const Login = () => {
         validate=false
         toast.warning("please enter password")
       }
-    
-
       return validate
-
     }
 
 
-    // const handleInputChange = (e) => setInput(e.target.value)
-  
-    // const isError = input === ''
-    const handlesubmit =(e)=>{
-     
+    const handlesubmit = async (e) =>{
       e.preventDefault()
-      console.log("hello")
-      
-      if(Validation())
-      {
-      const userdetails = {
-        email,password
-      }
-      console.log(userdetails)
-
-      fetch(`https://fragile-cow-umbrella.cyclic.app/user`)
-      .then((res)=>{
-        // toast.success("Registartion successfully")
-        return res.json()
-        
-      })
-      .then((dataa)=>{
-        console.log(dataa)
-        console.log("dataa",dataa)
-        if(Object.keys(dataa).length==0)
-        {
-          toast.warning("please enter valid email")
-        }
-        else{
-          // console.log(dataa.password,password)
-          if(dataa.password==password)
+         
+         if(Validation())
+         {
+          getdata(`https://fragile-cow-umbrella.cyclic.app/user`)
+         dataa.map((item)=>{
+          if(email==item.email && password==item.password)
           {
             toast.success("Login Successfully")
+            login(item.username)
+            // setAuth(true)
+            console.log(item.username)
+            // console.log(Auth)
+
+            // getdata(`https://fragile-cow-umbrella.cyclic.app/user`)
+           
+            return true
+       
           }
-          else{
-            toast.warning("please enter valid password")
-          }
+         
+          toast.warning("user is not registered")
+             return false
+          
+         })
+       
+         setemail("")
+         setpassword("")
+        //  getdata(`https://fragile-cow-umbrella.cyclic.app/user`)
+
         }
-      })
-      .catch((err)=>{
-        toast.error("login failed",err)
-      })
-    }
+
+       }
+
+       if(Auth)
+       {
+        console.log(true)
+        // toast.success("Login Successfully")
+       setTimeout(() => {
+         return navigate("/")
+       },100);
+       }
    
-     setemail("")
-       setpassword("")
-      //  setusername("")
-    }
 
   return (
     <>
@@ -129,6 +133,7 @@ const Login = () => {
     </InputGroup>
     </Center>
     <Input type="submit" value="Login" onClick={handlesubmit} backgroundColor="black" color="white" w={{base:"50%",md:"60%",sm:"15%"}} marginTop="5%"></Input>
+    <Text marginTop="2%">if you are new user? then click here<Link to="/register" style={{color:"blue"}}> Register</Link></Text>
     </FormControl>
     </Box>
     </Center>
