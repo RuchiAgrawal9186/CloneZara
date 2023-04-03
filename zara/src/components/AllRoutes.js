@@ -13,6 +13,9 @@ import SingleProduct from '../pages/SingleProduct'
 import WomanProducts from '../pages/WomanProducts'
 import Cart from "../pages/Cart"
 import Register from '../pages/Register'
+import PrivateRoute from './PrivateRoute'
+import Thankyou from '../pages/Thankyou'
+
 
 const AllRoutes = () => {
   return (
@@ -29,8 +32,10 @@ const AllRoutes = () => {
             <Route path="/beauty" element={<BeautyProducts></BeautyProducts>}/>
             <Route path="*" element={<PagenotFound></PagenotFound>}/>
             <Route path="/products" element={<Products></Products>}/>
+            <Route path="/cart" element={<PrivateRoute><Cart></Cart></PrivateRoute>}/>
             <Route path="/singleproduct/:section/:id" element={<SingleProduct></SingleProduct>}/>
             <Route path="/cart" element={<Cart></Cart>}/>
+            <Route path="/thankyou" element={<Thankyou></Thankyou>}/>
         </Routes>
       
     </div>

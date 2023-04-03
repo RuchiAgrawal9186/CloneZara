@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {useState} from "react"
-import {Link, Navigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
+import { dataContext } from '../context/DatacontextProvider';
+// import { useContext } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 // import { Navigate } from 'react-router-dom';
 import {
     FormControl,
-    
     Center,
     Input,
     Text,
@@ -19,11 +20,27 @@ import {
     Box,
     
   } from '@chakra-ui/react'
+  import {useNavigate} from "react-router-dom"
+
+
+  // const dataContext = React.createContext()
 
 const Register = () => {
     // const [input, setInput] = useState('')
+
+    const navigate = useNavigate();
+
+    const {dataa,getdata} = useContext(dataContext)
+    console.log("dataa",dataa)
+
     const [show, setShow] = useState(false)
     const handleClick = () => setShow(!show)
+
+    const [username,setusername]=useState("")
+    const [email,setemail]=useState("")
+    const [password,setpassword]=useState("")
+    // const [data,setdata]=useState([])
+    
 
 
     const Validation = ()=>{
@@ -46,63 +63,69 @@ const Register = () => {
         validate=false
         toast.warning("please enter password")
       }
-    
-
+      dataa.map((item)=>{
+       if(email==item.email)
+       {
+         toast.warning("user already registered")
+         validate=false
+       }
+       return validate
+      })
       return validate
 
     }
 
-    const [username,setusername]=useState("")
-    const [email,setemail]=useState("")
-    const [password,setpassword]=useState("")
-    const [data,setdata]=useState([])
+   
 
-    const handlesubmit =async(e)=>{
-     
+    const handlesubmit = async (e) =>{
       e.preventDefault()
-      console.log("hello")
-      if(Validation())
-      {
-      const userdetails = {
-        username,email,password
-      }
-      console.log(userdetails)
+         
+         if(Validation())
+         {
 
-     let x= await fetch(`https://fragile-cow-umbrella.cyclic.app/user`,{
-        method:"POST",
-        headers:{
-          "Content-Type":"application/json",
-        },
-        body:JSON.stringify(userdetails)
-      }).then((res)=>{
-        // toast.success("Registartion successfully")
-        // return res.json()
-        toast.success("Registartion successfully")
-        setTimeout(()=>{ 
-      
-        })
-        
-      })
-      .then((dataa)=>{
-        console.log(dataa)
-        let arr= []
-        arr.push(dataa)
-        setdata(arr)
-        console.log("data",arr)
-        data.map((item)=>{
+          const userdetails = {
+            username,email,password
+          }
+
+          try {
+
+            let data_req = await fetch(`https://fragile-cow-umbrella.cyclic.app/user`,{
+              method:"POST",
+              headers:{
+                "Content-Type":"application/json",
+              },
+              body:JSON.stringify(userdetails)
+            })
+            .then((res)=>{
+
+              toast.success("Registartion successfully")
+              setTimeout(() => {
+
+                return navigate("/login")
+                
+              }, 1000);
+
+              getdata(`https://fragile-cow-umbrella.cyclic.app/user`)
+
+            })
+
+            
+          } catch (error) {
+
+            console.log("error",error)
+            
+          }
+           
           
-          return email==item.email?toast.warning("user is already registered"):toast.success("Registartion successfully")
-        })
-      
-      })
-      .catch((err)=>{
-        toast.error("Registartion failed")
-      })
-    }
-     setemail("")
+
+        }
+
+        setemail("")
        setpassword("")
        setusername("")
+
     }
+
   return (
     <>
     <ToastContainer theme="colored"></ToastContainer>
@@ -134,7 +157,7 @@ const Register = () => {
       </InputRightElement>
     </InputGroup>
     </Center>
-    <Input type="submit" value="Register" backgroundColor="black" color="white" w={{base:"50%",md:"60%",sm:"15%"}} marginTop="5%" onClick={handlesubmit}></Input>
+    <Input type="submit" value="Register" backgroundColor="black" color="white" w={{base:"50%",md:"60%",sm:"15%"}} marginTop="5%" onClick={handlesubmit} ></Input>
     <Text marginTop="2%">if you already login? then click here<Link to="/login" style={{color:"blue"}}> Login</Link></Text>
     </FormControl>
     </Box>

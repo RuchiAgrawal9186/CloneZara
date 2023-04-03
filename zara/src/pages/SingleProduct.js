@@ -4,6 +4,9 @@ import {useParams} from "react-router-dom"
 // import Productlist from '../components/Productlist'
 import { Skeleton ,Stack} from '@chakra-ui/react'
 import axios from 'axios'
+import { useContext } from 'react'
+// import { dataContext } from '../context/DatacontextProvider'
+import { CartContext } from '../context/CartContextProvider'
 
 const SingleProduct = () => {
 
@@ -85,6 +88,10 @@ const SingleProduct = () => {
 
   const {name,img,rating,rate,price,color,catagory} = singleproduct
 
+  let arr = {id:id,name:name,img:img,price:price}
+
+  const {getcart} = useContext(CartContext)
+
   return (
     <div>
       {
@@ -121,7 +128,7 @@ const SingleProduct = () => {
                 </div>
                <b> <hr style={{color:"black"}}/></b>
 
-                <button className='button'> Add to Cart</button>
+                <button className='button' onClick={()=> getcart(arr)}> Add to Cart</button>
 
               </div>
 

@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {useEffect,useReducer} from "react"
 import axios from 'axios'
-import {Box,Select,HStack,VStack,Center,Button,ButtonGroup} from "@chakra-ui/react"
+import {Box,Select,VStack,Center,Button,ButtonGroup,Input,InputGroup,InputRightAddon, } from "@chakra-ui/react"
+import { FiSearch} from 'react-icons/fi';
+// import { Select,VStack ,Input,InputGroup,InputRightAddon,Box, Stack} from '@chakra-ui/react'
 // import { useState } from 'react'
-import FilterSection from '../components/FilterSection'
-import Sort from '../components/Sort'
+// import FilterSection from '../components/FilterSection'
+// import Sort from '../components/Sort'
 import Productlist from '../components/Productlist'
 import { Skeleton ,Stack} from '@chakra-ui/react'
+import { dataContext } from '../context/DatacontextProvider';
 
 // import { useParams } from 'react-router-dom'
 
@@ -25,9 +28,13 @@ const WomanProducts = () => {
   const [order,setorder]=useState("")
   const [color,setcolor]=useState("")
   const [catagory,setcatagory]=useState("")
+  const [search,setsearch]=useState("")
+  const [page,setpage]=useState(1)
+  
 
   console.log(order,color,catagory)
 
+  // let total = 27
 
   const reducer = (state,action) =>
   {
@@ -113,6 +120,15 @@ const WomanProducts = () => {
   {
     obj.color=color
   }
+  if(search)
+  {
+    obj.q=search
+  }
+  if(page)
+  {
+    obj._page=page
+    obj._limit=6
+  }
   console.log(obj)
 
   const section = "womenProducts"
@@ -139,8 +155,13 @@ const WomanProducts = () => {
   }
 
   useEffect(()=>{
-    getdata(API)
-  },[order,color,catagory])
+    const interval = setTimeout(()=>{
+      getdata(API)
+    },1000)
+
+    return ()=>clearTimeout(interval)
+    // getdata(API)
+  },[order,color,catagory,search,page])
 
   // const {isLoading,womanproducts}  = state
 
@@ -152,9 +173,9 @@ const WomanProducts = () => {
         {/* <FilterSection></FilterSection> */}
         <Center>
     <VStack spacing={6}>
-      <Box width="100%">   
+      <Box  mt="10%">   
       {/* <label alignContent="left">price sorting </label> */}
-    <Select placeholder='Sort by price' w="130%"  border="1px solid black" name="sort" id="sort" value={order} onChange={(e)=> setorder(e.target.value)}>
+    <Select placeholder='Sorting by price'  w={{base:"md",lg:"sm" ,md:"md",sm:"sm",xs:"xs"}}  border="1px solid black" name="sort" id="sort" value={order} onChange={(e)=> setorder(e.target.value)}>
     <option value='asc'>low to high</option>
     <option value='desc'>high to low</option>
     {/* <option value='option3'>Option 3</option> */}
@@ -163,7 +184,7 @@ const WomanProducts = () => {
     </Box> 
    
     <Box>   
-    <Select placeholder='Select By Category' w="130%" alignContent="right" border="1px solid black" name="catagory" id="catagory" value={catagory} onChange={(e)=> setcatagory(e.target.value)}>
+    <Select placeholder='Select By Category' w={{bas:"130%",md:"130%",sm:"100%",xs:"80%"}} alignContent="right" border="1px solid black" name="catagory" id="catagory" value={catagory} onChange={(e)=> setcatagory(e.target.value)}>
     <option value='tops'>tops</option>
     <option value='shirt'>shirt</option>
     <option value='dress'>dress</option>
@@ -174,7 +195,7 @@ const WomanProducts = () => {
     </Box> 
     
     <Box width="100%">   
-    <Select placeholder='Select By Color' w="130%" alignContent="right" border="1px solid black" name="color" id="color" value={color} onChange={(e)=> setcolor(e.target.value)}>
+    <Select placeholder='Select By Color' w={{bas:"130%",md:"130%",sm:"100%",xs:"80%"}} alignContent="right" border="1px solid black" name="color" id="color" value={color} onChange={(e)=> setcolor(e.target.value)}>
     <option value='red'>red</option>
     <option value='green'>green</option>
     <option value='blue'>blue</option>
@@ -188,44 +209,65 @@ const WomanProducts = () => {
       setcolor("")
       setorder("")
       setcatagory("")
+      setsearch("")
     }}>Reset All</button>
     </VStack>
-
-    
-
     </Center> 
       </div>
 
       <div className="product_view">
 
         <div className='sort_filter'>
-          <Sort></Sort>
+          {/* <Sort></Sort> */}
+          <Box display="flex" justifyContent="space-around" boxShadow='md' p='6' rounded='md' mb="2%" border="1px solid black">
+          <Box>
+
+          <InputGroup size='sm'>
+            <Input placeholder='Search products' w={{base:"md" , md:"md", sm:"sm"}} border="1px solid black" name="search" value={search} id="search"onChange={(e)=> setsearch(e.target.value)}/>
+            <InputRightAddon children={<FiSearch></FiSearch>} border="1px solid black"/>
+          </InputGroup>
+
+          </Box>
+          
+            </Box>
         </div>
 
         <div className='main_product'>
           {
             isLoading ? <Stack>
-            <Skeleton height='40px' />
-            <Skeleton height='40px' />
-            <Skeleton height='40px' />
-            <Skeleton height='40px' />
-            <Skeleton height='40px' />
-            <Skeleton height='40px' />
+            <Skeleton height='70px' />
+            <Skeleton height='70px' />
+            <Skeleton height='70px' />
+            <Skeleton height='70px' />
+            <Skeleton height='70px' />
+            <Skeleton height='70px' />
           </Stack>
              :
              
               womanproducts.map((item)=>{
-                return <Productlist {...item} key={item.id} section={section}></Productlist>
+                return <Productlist {...item} key={item.id} section={section} f></Productlist>
               })
          
              }
         
         </div>
 
+          {/* <div className='pagination'>
+          <button className='button' onClick={()=> setpage(page-1)} disabled={page==1} >Prev</button>
+          <p>{page}</p>
+          <button className='button' onClick={()=> setpage(page+1)} >Next</button>
+          </div>  */}
+
       </div>
 
     </div>
-   
+
+
+    <div className='pagination'>
+    <button className='button' onClick={()=> setpage(page-1)} disabled={page==1} >Prev</button>
+    <span>{page}</span>
+    <button className='button' onClick={()=> setpage(page+1)} >Next</button>
+    </div> 
     </>
   )
 }
