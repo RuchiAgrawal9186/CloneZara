@@ -64,7 +64,7 @@ const Login = () => {
          
          if(Validation())
          {
-          getdata(`https://easy-puce-crow-garb.cyclic.app/user`)
+          getdata(`https://zara-vej9.onrender.com/user`)
          dataa.map((item)=>{
           if(email==item.email && password==item.password)
           {
@@ -74,7 +74,7 @@ const Login = () => {
             console.log(item.username)
             // console.log(Auth)
 
-            // getdata(`https://easy-puce-crow-garb.cyclic.app/user`)
+            // getdata(`https://zara-vej9.onrender.com/user`)
            
             return true
        
@@ -87,7 +87,7 @@ const Login = () => {
        
          setemail("")
          setpassword("")
-        //  getdata(`https://easy-puce-crow-garb.cyclic.app/user`)
+        //  getdata(`https://zara-vej9.onrender.com/user`)
 
         }
 

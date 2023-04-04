@@ -12,7 +12,7 @@ const Cart = () => {
   const [cartdata,setcartdata] = useState([])
   const navigate = useNavigate();
 
-  const API = `https://easy-puce-crow-garb.cyclic.app/cart`
+  const API = `https://zara-vej9.onrender.com/cart`
 
 
   const getdata = async(url) =>{

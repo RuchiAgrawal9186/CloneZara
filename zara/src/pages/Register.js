@@ -89,7 +89,7 @@ const Register = () => {
 
           try {
 
-            let data_req = await fetch(`https://easy-puce-crow-garb.cyclic.app/user`,{
+            let data_req = await fetch(`https://zara-vej9.onrender.com/user`,{
               method:"POST",
               headers:{
                 "Content-Type":"application/json",
@@ -105,7 +105,7 @@ const Register = () => {
                 
               }, 1000);
 
-              getdata(`https://easy-puce-crow-garb.cyclic.app/user`)
+              getdata(`https://zara-vej9.onrender.com/user`)
 
             })
 

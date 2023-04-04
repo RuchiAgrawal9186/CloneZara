@@ -37,7 +37,7 @@ const [fetchdata,setfetchdata] = useState([])
 const {name} = useContext(AuthContext)
 // const {fetchdata} = useContext(CartContext)
 
-const API = `https://easy-puce-crow-garb.cyclic.app/cart`
+const API = `https://zara-vej9.onrender.com/cart`
     
     
       const getdata = async(url) =>{

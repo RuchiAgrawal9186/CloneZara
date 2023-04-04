@@ -18,7 +18,7 @@ const DatacontextProvider = (props) => {
 
    
 
-let API = `https://easy-puce-crow-garb.cyclic.app/user`
+let API = `https://zara-vej9.onrender.com/user`
 
   const getdata = async (url) =>{
 
