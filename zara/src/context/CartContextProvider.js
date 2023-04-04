@@ -25,7 +25,7 @@ const CartContextProvider = (props) => {
      
         try {
     
-            let data_req = fetch(`https://fragile-cow-umbrella.cyclic.app/cart`,{
+            let data_req = fetch(`https://easy-puce-crow-garb.cyclic.app/cart`,{
                   method:"POST",
                   headers:{
                     "Content-Type":"application/json",
@@ -46,7 +46,7 @@ const CartContextProvider = (props) => {
      
     }
     
-    const API = `https://fragile-cow-umbrella.cyclic.app/cart`
+    const API = `https://easy-puce-crow-garb.cyclic.app/cart`
     
     
       const getdata = async(url) =>{

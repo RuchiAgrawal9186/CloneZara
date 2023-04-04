@@ -59,7 +59,7 @@ const SingleProduct = () => {
   const [state,dispatch] = useReducer(reducer,initState)
 
 
-  const API = `https://fragile-cow-umbrella.cyclic.app/${section}/${id}`;
+  const API = `https://easy-puce-crow-garb.cyclic.app/${section}/${id}`;
 
   const getdata = async(URL) =>{
     dispatch({type:"loading"})

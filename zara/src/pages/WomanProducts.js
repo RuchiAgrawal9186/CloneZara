@@ -132,7 +132,7 @@ const WomanProducts = () => {
   console.log(obj)
 
   const section = "womenProducts"
-  let API = `https://fragile-cow-umbrella.cyclic.app/${section}`;
+  let API = `https://easy-puce-crow-garb.cyclic.app/${section}`;
    
   
   const getdata = async(URL) =>{

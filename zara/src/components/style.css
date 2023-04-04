@@ -268,7 +268,7 @@ body{
     font-size: 50px;
 }
 
-@media screen and (min-width: 480px) and (max-width:1024px) {
+@media screen and (min-width: 400px) and (max-width:1024px) {
 
 /* *************** single product page start ************************** */
 

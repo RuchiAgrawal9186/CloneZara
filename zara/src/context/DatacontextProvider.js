@@ -18,7 +18,7 @@ const DatacontextProvider = (props) => {
 
    
 
-let API = `https://fragile-cow-umbrella.cyclic.app/user`
+let API = `https://easy-puce-crow-garb.cyclic.app/user`
 
   const getdata = async (url) =>{
 

@@ -12,7 +12,7 @@ const Cart = () => {
   const [cartdata,setcartdata] = useState([])
   const navigate = useNavigate();
 
-  const API = `https://fragile-cow-umbrella.cyclic.app/cart`
+  const API = `https://easy-puce-crow-garb.cyclic.app/cart`
 
 
   const getdata = async(url) =>{

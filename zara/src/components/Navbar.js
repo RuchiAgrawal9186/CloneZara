@@ -1,3 +1,4 @@
+
 import React, { useContext } from 'react'
 import {Link} from "react-router-dom"
 // import styles from "./Navbar.module.css"
@@ -36,7 +37,7 @@ const [fetchdata,setfetchdata] = useState([])
 const {name} = useContext(AuthContext)
 // const {fetchdata} = useContext(CartContext)
 
-const API = `https://fragile-cow-umbrella.cyclic.app/cart`
+const API = `https://easy-puce-crow-garb.cyclic.app/cart`
     
     
       const getdata = async(url) =>{
