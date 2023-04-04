@@ -2,14 +2,14 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap';  
-
+// bg="dark" variant="dark" color="white"
 const Navbar1 = () => {
   return (
 
     <>  
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" color="white">  
+      <Navbar collapseOnSelect expand="lg" >  
         <Container>  
-          <Navbar.Brand href="/"><div className="header"><img src='./images/result.png' alt="logo" className="logo"></img></div></Navbar.Brand>  
+          <Navbar.Brand href="/"><img src='./images/result.png' alt="logo" className='logo'></img></Navbar.Brand>  
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />  
           <Navbar.Collapse id="responsive-navbar-nav">  
             <Nav className="me-auto">  
