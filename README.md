@@ -1,22 +1,22 @@
 
 # ZARA Clone 
 
-(Fashion Icon) -> project unique name
+(Fashion Icon) -> Project unique name
 
-its basically e-commerce website where we an purcharse according to our need
+it's basically an e-commerce website where we a purchase product according to our need
 
-it is solo project i made this project during construct week in 5 days
-for this project i made new logo and create unique name which is Fshion icon
+it is a solo project I made this project during construct week in 5 days
+for this project, i made a new logo and created unique name which is Fashion icon
 
 
 ## Tech Stack
-I made this project using the : 
+I made this project using the following: 
 
 HTML, CSS, Javascript,React JS, Chakra UI ,Bootstarp
 
 **Server:** Node
 
-for deployment the data i used Cyclic server
+for the deployment of the data I used Render server
 
 
 ## Screenshots
@@ -25,11 +25,11 @@ Navigation
 
 ![navigation](https://user-images.githubusercontent.com/112552732/229432729-7c13296c-17dc-4c01-8543-2e9b773f9c79.PNG)
 
-category in home page
+category on the home page
 
 ![category](https://user-images.githubusercontent.com/112552732/229433051-8b770199-ed0a-4935-865d-13501bb9bd9c.PNG)
 
-slider in home page
+slider on the home page
 
 ![slider](https://user-images.githubusercontent.com/112552732/229433435-7ccd98d5-9368-4cdd-966d-738c22d132b0.PNG)
 
